@@ -222,13 +222,13 @@
             uint16_t targetBitrate = read_u16_be(temp+1);
             uint16_t practicalRate = read_u16_be(temp+3);
             uint16_t packetPerSecond = read_u16_be(temp+5);
-            uint16_t recvBitrate = 0;
+            uint16_t simulatedBandwidth = 0;
             uint16_t recvPackets = 0;
             if (data.length > 7) {
-                recvBitrate = read_u16_be(temp+7);
-                recvPackets = read_u16_be(temp+9);
+                simulatedBandwidth = read_u16_be(temp+7);
             }
-            [self countWithTargetRate:targetBitrate practicalRate:practicalRate packerPerSecond:packetPerSecond recvRate:recvBitrate recvPackets:recvPackets];
+            [self countWithTargetRate:targetBitrate practicalRate:practicalRate packerPerSecond:packetPerSecond recvRate:simulatedBandwidth recvPackets:recvPackets];
+            receivedBytes = simulatedBandwidth * 128;
             break;
         }
         case 0x02: { //others

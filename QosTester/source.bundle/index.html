@@ -47,7 +47,7 @@
             },
             yAxis: { //设置Y轴
                 title: 'kB/s',
-                max: 500, //Y轴最大值
+                max: 1000, //Y轴最大值
                 min: 0 , //Y轴最小值
                 minorTickInterval: 50,//最小刻度
                 tickPixelInterval:100//刻度间隔
@@ -119,7 +119,7 @@
                          })()
                   },
                   {
-                  name: '接收码率',
+                  name: '模拟的带宽',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
                          time = (new Date()).getTime(),
