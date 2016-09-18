@@ -14,14 +14,13 @@
 		53E07CA11A5E767E00331541 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E07CA01A5E767E00331541 /* ViewController.m */; };
 		53E07CA31A5E767E00331541 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E07CA21A5E767E00331541 /* Images.xcassets */; };
 		53E07CA61A5E767E00331541 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E07CA41A5E767E00331541 /* Main.storyboard */; };
-		E42F422E1A67C166006DFB1B /* linked_list_base.m in Sources */ = {isa = PBXBuildFile; fileRef = E42F422D1A67C166006DFB1B /* linked_list_base.m */; };
+		6C80BA3C1D8E896000F0D84A /* Utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C80BA3B1D8E896000F0D84A /* Utils.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		535A54D11A5E8BBB004B36EC /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = QosTester/GCDAsyncUdpSocket.h; sourceTree = SOURCE_ROOT; };
 		535A54D21A5E8BBB004B36EC /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = QosTester/GCDAsyncUdpSocket.m; sourceTree = SOURCE_ROOT; };
 		535A54D41A5EAA30004B36EC /* source.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = source.bundle; sourceTree = "<group>"; };
-		53D4EF291A64BD8500AA7E72 /* UtilsStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsStructures.h; sourceTree = "<group>"; };
 		53E07C951A5E767E00331541 /* QosTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QosTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E07C991A5E767E00331541 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E07C9A1A5E767E00331541 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -32,8 +31,7 @@
 		53E07CA21A5E767E00331541 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		53E07CA51A5E767E00331541 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		53E1544E1A63C1D000AA6EA9 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		E42F422C1A67C166006DFB1B /* linked_list_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linked_list_base.h; sourceTree = "<group>"; };
-		E42F422D1A67C166006DFB1B /* linked_list_base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = linked_list_base.m; sourceTree = "<group>"; };
+		6C80BA3B1D8E896000F0D84A /* Utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Utils.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,14 +67,11 @@
 				535A54D41A5EAA30004B36EC /* source.bundle */,
 				53E07C9A1A5E767E00331541 /* AppDelegate.h */,
 				53E07C9B1A5E767E00331541 /* AppDelegate.m */,
-				E42F422C1A67C166006DFB1B /* linked_list_base.h */,
-				E42F422D1A67C166006DFB1B /* linked_list_base.m */,
 				53E07C9F1A5E767E00331541 /* ViewController.h */,
 				53E07CA01A5E767E00331541 /* ViewController.m */,
-				53E1544E1A63C1D000AA6EA9 /* Utils.h */,
-				53D4EF291A64BD8500AA7E72 /* UtilsStructures.h */,
 				53E07CA21A5E767E00331541 /* Images.xcassets */,
 				53E07CA41A5E767E00331541 /* Main.storyboard */,
+				6C80BA3D1D8E8AC400F0D84A /* Utils */,
 				53E07CBB1A5E76F200331541 /* Socket */,
 				53E07C981A5E767E00331541 /* Supporting Files */,
 			);
@@ -99,6 +94,15 @@
 				535A54D21A5E8BBB004B36EC /* GCDAsyncUdpSocket.m */,
 			);
 			path = Socket;
+			sourceTree = "<group>";
+		};
+		6C80BA3D1D8E8AC400F0D84A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6C80BA3B1D8E896000F0D84A /* Utils.c */,
+				53E1544E1A63C1D000AA6EA9 /* Utils.h */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +131,7 @@
 		53E07C8D1A5E767E00331541 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = handwin;
 				TargetAttributes = {
 					53E07C941A5E767E00331541 = {
@@ -174,8 +178,8 @@
 				535A54D31A5E8BBB004B36EC /* GCDAsyncUdpSocket.m in Sources */,
 				53E07CA11A5E767E00331541 /* ViewController.m in Sources */,
 				53E07C9E1A5E767E00331541 /* main.m in Sources */,
+				6C80BA3C1D8E896000F0D84A /* Utils.c in Sources */,
 				53E07C9C1A5E767E00331541 /* AppDelegate.m in Sources */,
-				E42F422E1A67C166006DFB1B /* linked_list_base.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,15 +210,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -247,8 +255,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -257,6 +267,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -277,6 +288,7 @@
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = QosTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.v5.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -289,6 +301,7 @@
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = QosTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.v5.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

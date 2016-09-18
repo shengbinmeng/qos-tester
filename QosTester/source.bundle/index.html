@@ -39,7 +39,7 @@
 
             },
             title: {
-                text: '带宽占用走势图'  //图表标题
+                text: '数值变化曲线图'  //图表标题
             },
             xAxis: { //设置X轴
                 type: 'datetime',  //X轴为日期时间类型
@@ -55,7 +55,7 @@
             },
             tooltip: {//当鼠标悬置数据点时的提示框
                 formatter: function() { //格式化提示信息
-                    return '<b>带宽</b><br/>'+
+                    return '<b>数值</b><br/>'+
                     Highcharts.dateFormat('%H:%M:%S', this.x) +'<br/>'+ 
                                      Highcharts.numberFormat(this.y, 2);//+'℃';
                 }
@@ -71,7 +71,7 @@
                 href: '' //设置LOGO链接地址
             },
          series: [{
-                  name: '建议码率',
+                  name: '建议发送码率',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
                          time = (new Date()).getTime(),
@@ -87,7 +87,7 @@
                          })()
                   },
                   {
-                  name: '实际码率',
+                  name: '实际发送码率',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
                          time = (new Date()).getTime(),
@@ -103,7 +103,7 @@
                          })()
                   },
                   {
-                  name: '每秒包数',
+                  name: '每秒发送包数',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
                          time = (new Date()).getTime(),
@@ -119,7 +119,7 @@
                          })()
                   },
                   {
-                  name: '模拟的带宽',
+                  name: '当前可用带宽',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
                          time = (new Date()).getTime(),
@@ -135,7 +135,7 @@
                          })()
                   },
                   {
-                  name: '接收包数',
+                  name: '（暂时未用）',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
                          time = (new Date()).getTime(),
