@@ -17,6 +17,7 @@
     GCDAsyncUdpSocket *gcdUdpSocket;
     WebView *webView;
     BOOL chartReady;
+    BOOL needUpdate;
     
     // Data that will be drawn (currently only support at most 5 numbers)
     int targetSendingRate;
@@ -31,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     chartReady = NO;
+    needUpdate = NO;
     
     [self initChart];
     
@@ -40,13 +42,16 @@
 }
 
 - (void)updateChart {
-    if (!chartReady) {
+    if (!chartReady || !needUpdate) {
         return;
     }
     NSDate* nowDate = [[NSDate alloc]init];
     NSTimeInterval timeInterval = [nowDate timeIntervalSince1970] * 1000;
     NSString* jsStr = [NSString stringWithFormat:@"updateData(%f, %u, %u, %u, %u, %u)", timeInterval, targetSendingRate, actualSendingRate, sendingPacketRate, availableBandwidth, 0];
     [webView stringByEvaluatingJavaScriptFromString:jsStr];
+    
+    // Because we have updated. (If other places decide to update, they should set to YES there)
+    needUpdate = NO;
 }
 
 #pragma mark - Chart methods
@@ -102,6 +107,7 @@
         }
     }
     NSLog(@"New data arrived: %d, %d, %d, %d, %d", targetSendingRate, actualSendingRate, sendingPacketRate, availableBandwidth, 0);
+    needUpdate = YES;
 }
 
 @end
