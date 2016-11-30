@@ -19,11 +19,8 @@
     BOOL chartReady;
     BOOL needUpdate;
     
-    // Data that will be drawn (currently only support at most 5 numbers)
-    int targetSendingRate;
-    int actualSendingRate;
-    int sendingPacketRate;
-    int availableBandwidth;
+    // Data series that will be drawn (currently only support at most 8 numbers)
+    int series[8];
 }
 @end
 
@@ -47,7 +44,8 @@
     }
     NSDate* nowDate = [[NSDate alloc]init];
     NSTimeInterval timeInterval = [nowDate timeIntervalSince1970] * 1000;
-    NSString* jsStr = [NSString stringWithFormat:@"updateData(%f, %u, %u, %u, %u, %u)", timeInterval, targetSendingRate, actualSendingRate, sendingPacketRate, availableBandwidth, 0];
+    
+    NSString* jsStr = [NSString stringWithFormat:@"updateData(%f, %u, %u, %u, %u, %u, %u, %u, %u)", timeInterval, series[0], series[1], series[2], series[3], series[4], series[5], series[6], series[7]];
     [webView stringByEvaluatingJavaScriptFromString:jsStr];
     
     // Because we have updated. (If other places decide to update, they should set to YES there)
@@ -94,19 +92,41 @@
     }
     uint8_t* bytes = (uint8_t*)data.bytes;
     switch (bytes[0]) {
-            // The first byte specifies the data protocol.
+        // The first byte specifies the data protocol.
         case 0x01: {
+            // Protocol used by the echorobot's status report.
             // All values are of type uint16_t which consume 2 bytes.
-            targetSendingRate = read_u16_be(bytes+1);
-            actualSendingRate = read_u16_be(bytes+3);
-            sendingPacketRate = read_u16_be(bytes+5);
+            series[0] = read_u16_be(bytes+1); // target sending bitrate
+            series[1] = read_u16_be(bytes+3); // actual sending bitrate
+            series[2] = read_u16_be(bytes+5); // sending packet rate
             if (data.length > 7) {
-                availableBandwidth = read_u16_be(bytes+7);
+                series[3] = read_u16_be(bytes+7); // available bandwidth
             }
+            series[4] = 0;
+            series[5] = 0;
+            series[6] = 0;
+            series[7] = 0;
             break;
         }
+        case 0x02: {
+            // Protocol used by the udpServer's net control analytics.
+            // All values are of type uint16_t which consume 2 bytes.
+            series[0] = read_u16_be(bytes+1); // reported sending bitrate
+            series[1] = read_u16_be(bytes+3); // calculated sending bitrate
+            series[2] = read_u16_be(bytes+5); // receiving bitrate
+            series[3] = read_u16_be(bytes+7); // sampled bandwidth
+            series[4] = read_u16_be(bytes+9); // decided bandwidth
+            series[5] = read_u16_be(bytes+11); // delay average
+            series[6] = read_u16_be(bytes+13); // decided per
+            series[7] = 0;
+            break;
+        }
+        default: {
+            NSLog(@"%@", data.description);
+        }
     }
-    NSLog(@"New data arrived: %d, %d, %d, %d, %d", targetSendingRate, actualSendingRate, sendingPacketRate, availableBandwidth, 0);
+    
+    NSLog(@"New data arrived: %d, %d, %d, %d, %d, %d, %d, %d", series[0], series[1], series[2], series[3], series[4], series[5], series[6], series[7]);
     needUpdate = YES;
 }
 
