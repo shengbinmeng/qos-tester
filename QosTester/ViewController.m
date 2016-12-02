@@ -114,11 +114,11 @@
             series[0] = read_u16_be(bytes+1); // reported sending bitrate
             series[1] = read_u16_be(bytes+3); // calculated sending bitrate
             series[2] = read_u16_be(bytes+5); // receiving bitrate
-            series[3] = read_u16_be(bytes+7); // sampled bandwidth
-            series[4] = read_u16_be(bytes+9); // decided bandwidth
-            series[5] = read_u16_be(bytes+11); // delay average
-            series[6] = read_u16_be(bytes+13); // decided per
-            series[7] = 0;
+            series[3] = read_u16_be(bytes+7); // delay average
+            series[4] = read_u16_be(bytes+9); // packet loss percent
+            series[5] = read_u16_be(bytes+11); // sampled bandwidth
+            series[6] = read_u16_be(bytes+13); // decided bandwidth
+            series[7] = read_u16_be(bytes+15); // decided per
             break;
         }
         default: {

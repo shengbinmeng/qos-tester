@@ -125,38 +125,6 @@
                          })()
                   },
                   {
-                  name: '采样带宽',
-                  data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
-                         var data = [],
-                         time = (new Date()).getTime(),
-                         i;
-                         
-                         for (i = -59; i <= 0; i++) {
-                         data.push({
-                                   x: time + i * 5000,
-                                   y: 0
-                                   });
-                         }
-                         return data;
-                         })()
-                  },
-                  {
-                  name: '决定带宽',
-                  data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
-                         var data = [],
-                         time = (new Date()).getTime(),
-                         i;
-                         
-                         for (i = -59; i <= 0; i++) {
-                         data.push({
-                                   x: time + i * 5000,
-                                   y: 0
-                                   });
-                         }
-                         return data;
-                         })()
-                  },
-                  {
                   name: '平均延时',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
@@ -173,7 +141,7 @@
                          })()
                   },
                   {
-                  name: '丢包率',
+                  name: '丢包百分比',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
                          time = (new Date()).getTime(),
@@ -189,7 +157,39 @@
                          })()
                   },
                   {
-                  name: '（暂时未用）',
+                  name: '采样带宽',
+                  data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
+                         var data = [],
+                         time = (new Date()).getTime(),
+                         i;
+                         
+                         for (i = -59; i <= 0; i++) {
+                         data.push({
+                                   x: time + i * 5000,
+                                   y: 0
+                                   });
+                         }
+                         return data;
+                         })()
+                  },
+                  {
+                  name: '决定的带宽',
+                  data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
+                         var data = [],
+                         time = (new Date()).getTime(),
+                         i;
+                         
+                         for (i = -59; i <= 0; i++) {
+                         data.push({
+                                   x: time + i * 5000,
+                                   y: 0
+                                   });
+                         }
+                         return data;
+                         })()
+                  },
+                  {
+                  name: '决定的丢包率',
                   data: (function() { //设置默认数据，这里是假数据，如果有真数据可以在页面加载时候用真数据替换掉
                          var data = [],
                          time = (new Date()).getTime(),
