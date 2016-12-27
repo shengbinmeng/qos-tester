@@ -11,7 +11,10 @@
 #import <WebKit/WebKit.h>
 #include "Utils.h"
 
-#define SELF_PORT   18000
+#define SELF_PORT 18002
+
+#define HUB_HOST @"139.196.33.47"
+#define HUB_PORT 18001
 
 @interface ViewController () <GCDAsyncUdpSocketDelegate, WebFrameLoadDelegate> {
     GCDAsyncUdpSocket *gcdUdpSocket;
@@ -81,8 +84,11 @@
         gcdUdpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
         if (![gcdUdpSocket bindToPort:SELF_PORT error:&error] || ![gcdUdpSocket beginReceiving:&error]) {
             NSLog(@"Error binding: %@", error);
-            return;
         }
+
+        // Send the ready signal to the hub so it will send us data.
+        NSData *data = [@"ready" dataUsingEncoding:NSUTF8StringEncoding];
+        [gcdUdpSocket sendData:data toHost:HUB_HOST port:HUB_PORT withTimeout:-1 tag:0];
     }
 }
 
@@ -107,6 +113,12 @@
             series[6] = 0;
             series[7] = 0;
             break;
+        }
+        case 0x03: {
+            char *str = (char*)bytes + 1;
+            NSLog(@"%s", str);
+            bytes = bytes + 1 + strlen(str);
+            // Fall through to next case.
         }
         case 0x02: {
             // Protocol used by the udpServer's net control analytics.
